@@ -1,0 +1,1227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DBAUSA_PYMOVILModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TBL_MOV_NOTA">
+          <Key>
+            <PropertyRef Name="not_int_id" />
+          </Key>
+          <Property Name="not_int_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="not_str_archivo" Type="varchar" MaxLength="250" />
+          <Property Name="not_bit_anulado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBL_MOV_RELACION_CLIENTE_TAREA">
+          <Key>
+            <PropertyRef Name="rel_int_id" />
+          </Key>
+          <Property Name="rel_int_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tar_int_id" Type="int" />
+          <Property Name="cli_int_id" Type="int" />
+        </EntityType>
+        <EntityType Name="TBL_MOV_RELACION_NOTA_TAREA">
+          <Key>
+            <PropertyRef Name="rel_int_id" />
+          </Key>
+          <Property Name="rel_int_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tar_int_id" Type="int" />
+          <Property Name="not_int_id" Type="int" />
+        </EntityType>
+        <EntityType Name="TBL_MOV_TAREA">
+          <Key>
+            <PropertyRef Name="tar_int_id" />
+          </Key>
+          <Property Name="tar_int_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tiptar_int_id" Type="int" Nullable="false" />
+          <Property Name="usr_int_id" Type="int" Nullable="false" />
+          <Property Name="tar_int_prioridad" Type="int" />
+          <Property Name="tar_dat_fchcreacion" Type="datetime" />
+          <Property Name="tar_dat_fchmodificacion" Type="datetime" />
+          <Property Name="tar_dat_fchlimite" Type="datetime" />
+          <Property Name="tar_txt_detalle" Type="text" />
+          <Property Name="tar_int_estado" Type="int" />
+          <Property Name="tar_str_observacion" Type="varchar" MaxLength="250" />
+          <Property Name="tar_str_orden" Type="varchar" MaxLength="15" />
+          <Property Name="tar_bit_anulado" Type="int" />
+        </EntityType>
+        <EntityType Name="TBL_MOV_TAREAS_TIPO">
+          <Key>
+            <PropertyRef Name="tiptar_int_id" />
+          </Key>
+          <Property Name="tiptar_int_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tiptar_str_nombre" Type="varchar" MaxLength="200" />
+          <Property Name="tiptar_str_descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="tiptar_int_estado" Type="int" />
+          <Property Name="tiptar_int_usrcreacion" Type="int" Nullable="false" />
+          <Property Name="tiptar_dat_fcreacion" Type="datetime" Nullable="false" />
+          <Property Name="tiptar_int_usrmodif" Type="int" />
+          <Property Name="tiptar_dat_ultimamodif" Type="datetime" />
+          <Property Name="tptar_bit_anulado" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_TBL_MOV_RELACION_CLIENTE_TAREA_TBL_MOV_TAREA">
+          <End Role="TBL_MOV_TAREA" Type="Self.TBL_MOV_TAREA" Multiplicity="0..1" />
+          <End Role="TBL_MOV_RELACION_CLIENTE_TAREA" Type="Self.TBL_MOV_RELACION_CLIENTE_TAREA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_MOV_TAREA">
+              <PropertyRef Name="tar_int_id" />
+            </Principal>
+            <Dependent Role="TBL_MOV_RELACION_CLIENTE_TAREA">
+              <PropertyRef Name="tar_int_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_MOV_RELACION_NOTA_TAREA_TBL_MOV_NOTA">
+          <End Role="TBL_MOV_NOTA" Type="Self.TBL_MOV_NOTA" Multiplicity="0..1" />
+          <End Role="TBL_MOV_RELACION_NOTA_TAREA" Type="Self.TBL_MOV_RELACION_NOTA_TAREA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_MOV_NOTA">
+              <PropertyRef Name="not_int_id" />
+            </Principal>
+            <Dependent Role="TBL_MOV_RELACION_NOTA_TAREA">
+              <PropertyRef Name="not_int_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_MOV_RELACION_NOTA_TAREA_TBL_MOV_TAREA">
+          <End Role="TBL_MOV_TAREA" Type="Self.TBL_MOV_TAREA" Multiplicity="0..1" />
+          <End Role="TBL_MOV_RELACION_NOTA_TAREA" Type="Self.TBL_MOV_RELACION_NOTA_TAREA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_MOV_TAREA">
+              <PropertyRef Name="tar_int_id" />
+            </Principal>
+            <Dependent Role="TBL_MOV_RELACION_NOTA_TAREA">
+              <PropertyRef Name="tar_int_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_MOV_TAREA_TBL_MOV_TAREAS_TIPO">
+          <End Role="TBL_MOV_TAREAS_TIPO" Type="Self.TBL_MOV_TAREAS_TIPO" Multiplicity="1" />
+          <End Role="TBL_MOV_TAREA" Type="Self.TBL_MOV_TAREA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_MOV_TAREAS_TIPO">
+              <PropertyRef Name="tiptar_int_id" />
+            </Principal>
+            <Dependent Role="TBL_MOV_TAREA">
+              <PropertyRef Name="tiptar_int_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="PA_MOV_CLIENTE_CONDICIONPAGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cliente" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_CLIENTE_CONDICIONPAGO_DETALLE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cliente" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_CLIENTE_CONTACTOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cliente" Type="int" Mode="In" />
+          <Parameter Name="contacto" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_CLIENTE_CONTACTOS_TELEFONOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cliente" Type="int" Mode="In" />
+          <Parameter Name="contacto" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_CLIENTE_DESPACHO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="orden" Type="int" Mode="In" />
+          <Parameter Name="referencia" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_CLIENTE_MOROSIDAD_UTILIZACION_LINEA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cliente" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_CLIENTE_PARTICIPACION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cliente" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_CLIENTE_PARTICIPACION_DETALLE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cliente" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_CLIENTE_TARIFAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cliente" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_DEVOLVER_IDUSUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="usr" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_NOTA_DELETE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="not_int_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_NOTA_INSERT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="not_str_archivo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_NOTA_SELECT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="not_int_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_NOTA_UPDATE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="not_int_id" Type="int" Mode="In" />
+          <Parameter Name="not_str_archivo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_NOTA_UPDATE_2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="not_str_archivo" Type="nvarchar" Mode="In" />
+          <Parameter Name="new_str_archivo" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_OPERACIONES_DESPACHADORES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PA_MOV_OPERACIONES_DETALLE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ope_int_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_OPERACIONES_INICIAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ope_int_id" Type="int" Mode="In" />
+          <Parameter Name="usr_int_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_OPERACIONES_LISTAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ope_int_despachador" Type="int" Mode="In" />
+          <Parameter Name="cli_int_id" Type="int" Mode="In" />
+          <Parameter Name="ord_int_id" Type="int" Mode="In" />
+          <Parameter Name="fecha" Type="datetime" Mode="In" />
+          <Parameter Name="alm_int_id" Type="int" Mode="In" />
+          <Parameter Name="estado" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_OPERACIONES_OPCIONES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ope_int_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_OPERACIONES_PERMISOOK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ope_int_id" Type="int" Mode="In" />
+          <Parameter Name="usr_int_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_OPERACIONES_REASGINACION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ope_int_id" Type="int" Mode="In" />
+          <Parameter Name="ope_int_despachador" Type="int" Mode="In" />
+          <Parameter Name="ope_str_observacion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_OPERACIONES_SOLICITARTRANSPORTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ope_int_id" Type="int" Mode="In" />
+          <Parameter Name="usr_int_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_OPERACIONES_TERMINAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ope_int_id" Type="int" Mode="In" />
+          <Parameter Name="usr_int_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_ORDEN_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="anio" Type="int" Mode="In" />
+          <Parameter Name="numero" Type="varchar" Mode="In" />
+          <Parameter Name="cliente" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_RELACION_CLIENTE_TAREA_DELETE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tar_int_id" Type="int" Mode="In" />
+          <Parameter Name="cli_int_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_RELACION_CLIENTE_TAREA_INSERT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tar_int_id" Type="int" Mode="In" />
+          <Parameter Name="cli_int_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_RELACION_CLIENTE_TAREA_SELECT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tar_int_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_RELACION_CLIENTE_TAREA_UPDATE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="rel_int_id" Type="int" Mode="In" />
+          <Parameter Name="tar_int_id" Type="int" Mode="In" />
+          <Parameter Name="cli_int_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_RELACION_NOTA_TAREA_DELETE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tar_int_id" Type="int" Mode="In" />
+          <Parameter Name="not_int_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_RELACION_NOTA_TAREA_INSERT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tar_int_id" Type="int" Mode="In" />
+          <Parameter Name="not_int_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_RELACION_NOTA_TAREA_SELECT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tar_int_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_RELACION_NOTA_TAREA_UPDATE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="rel_int_id" Type="int" Mode="In" />
+          <Parameter Name="tar_int_id" Type="int" Mode="In" />
+          <Parameter Name="not_int_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_TAREA_DELETE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tar_int_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_TAREA_INSERT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tiptar_int_id" Type="int" Mode="In" />
+          <Parameter Name="usr_int_id" Type="int" Mode="In" />
+          <Parameter Name="tar_int_prioridad" Type="int" Mode="In" />
+          <Parameter Name="tar_dat_fchlimite" Type="datetime" Mode="In" />
+          <Parameter Name="tar_txt_detalle" Type="text" Mode="In" />
+          <Parameter Name="tar_int_estado" Type="int" Mode="In" />
+          <Parameter Name="tar_str_observacion" Type="varchar" Mode="In" />
+          <Parameter Name="tar_str_orden" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_TAREA_SELECT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="usr_int_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_TAREA_TIPO_SELECT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PA_MOV_TAREA_UPDATE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tar_int_id" Type="int" Mode="In" />
+          <Parameter Name="tiptar_int_id" Type="int" Mode="In" />
+          <Parameter Name="usr_int_id" Type="int" Mode="In" />
+          <Parameter Name="tar_int_prioridad" Type="int" Mode="In" />
+          <Parameter Name="tar_dat_fchlimite" Type="datetime" Mode="In" />
+          <Parameter Name="tar_txt_detalle" Type="text" Mode="In" />
+          <Parameter Name="tar_int_estado" Type="int" Mode="In" />
+          <Parameter Name="tar_str_observacion" Type="varchar" Mode="In" />
+          <Parameter Name="tar_str_orden" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_TAREAS_TIPO_DELETE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tiptar_int_id" Type="int" Mode="In" />
+          <Parameter Name="tiptar_int_usrcreacion" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_TAREAS_TIPO_INSERT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tiptar_str_nombre" Type="varchar" Mode="In" />
+          <Parameter Name="tiptar_str_descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="tiptar_int_estado" Type="int" Mode="In" />
+          <Parameter Name="tiptar_int_usrmodif" Type="int" Mode="In" />
+          <Parameter Name="tiptar_int_usrcreacion" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_TAREAS_TIPO_UPDATE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tiptar_int_id" Type="int" Mode="In" />
+          <Parameter Name="tiptar_str_nombre" Type="varchar" Mode="In" />
+          <Parameter Name="tiptar_str_descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="tiptar_int_estado" Type="int" Mode="In" />
+          <Parameter Name="tiptar_int_usrmodif" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_USUARIO_CARTERA_CLIENTES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="usr" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_USUARIO_DATOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="usr_int_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_USUARIO_ROL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="usr" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PA_MOV_VALIDAR_USUARIO_EXTERNO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="usr" Type="varchar" Mode="In" />
+          <Parameter Name="clave" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="DBAUSA_PYMOVILModelStoreContainer">
+          <EntitySet Name="TBL_MOV_NOTA" EntityType="Self.TBL_MOV_NOTA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_MOV_RELACION_CLIENTE_TAREA" EntityType="Self.TBL_MOV_RELACION_CLIENTE_TAREA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_MOV_RELACION_NOTA_TAREA" EntityType="Self.TBL_MOV_RELACION_NOTA_TAREA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_MOV_TAREA" EntityType="Self.TBL_MOV_TAREA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_MOV_TAREAS_TIPO" EntityType="Self.TBL_MOV_TAREAS_TIPO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TBL_MOV_RELACION_CLIENTE_TAREA_TBL_MOV_TAREA" Association="Self.FK_TBL_MOV_RELACION_CLIENTE_TAREA_TBL_MOV_TAREA">
+            <End Role="TBL_MOV_TAREA" EntitySet="TBL_MOV_TAREA" />
+            <End Role="TBL_MOV_RELACION_CLIENTE_TAREA" EntitySet="TBL_MOV_RELACION_CLIENTE_TAREA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_MOV_RELACION_NOTA_TAREA_TBL_MOV_NOTA" Association="Self.FK_TBL_MOV_RELACION_NOTA_TAREA_TBL_MOV_NOTA">
+            <End Role="TBL_MOV_NOTA" EntitySet="TBL_MOV_NOTA" />
+            <End Role="TBL_MOV_RELACION_NOTA_TAREA" EntitySet="TBL_MOV_RELACION_NOTA_TAREA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_MOV_RELACION_NOTA_TAREA_TBL_MOV_TAREA" Association="Self.FK_TBL_MOV_RELACION_NOTA_TAREA_TBL_MOV_TAREA">
+            <End Role="TBL_MOV_TAREA" EntitySet="TBL_MOV_TAREA" />
+            <End Role="TBL_MOV_RELACION_NOTA_TAREA" EntitySet="TBL_MOV_RELACION_NOTA_TAREA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_MOV_TAREA_TBL_MOV_TAREAS_TIPO" Association="Self.FK_TBL_MOV_TAREA_TBL_MOV_TAREAS_TIPO">
+            <End Role="TBL_MOV_TAREAS_TIPO" EntitySet="TBL_MOV_TAREAS_TIPO" />
+            <End Role="TBL_MOV_TAREA" EntitySet="TBL_MOV_TAREA" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBAUSA_PYMOVILModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TBL_MOV_NOTA">
+          <Key>
+            <PropertyRef Name="not_int_id" />
+          </Key>
+          <Property Name="not_int_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="not_str_archivo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="not_bit_anulado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TBL_MOV_RELACION_NOTA_TAREA" Relationship="Self.FK_TBL_MOV_RELACION_NOTA_TAREA_TBL_MOV_NOTA" FromRole="TBL_MOV_NOTA" ToRole="TBL_MOV_RELACION_NOTA_TAREA" />
+        </EntityType>
+        <EntityType Name="TBL_MOV_RELACION_CLIENTE_TAREA">
+          <Key>
+            <PropertyRef Name="rel_int_id" />
+          </Key>
+          <Property Name="rel_int_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tar_int_id" Type="Int32" />
+          <Property Name="cli_int_id" Type="Int32" />
+          <NavigationProperty Name="TBL_MOV_TAREA" Relationship="Self.FK_TBL_MOV_RELACION_CLIENTE_TAREA_TBL_MOV_TAREA" FromRole="TBL_MOV_RELACION_CLIENTE_TAREA" ToRole="TBL_MOV_TAREA" />
+        </EntityType>
+        <EntityType Name="TBL_MOV_RELACION_NOTA_TAREA">
+          <Key>
+            <PropertyRef Name="rel_int_id" />
+          </Key>
+          <Property Name="rel_int_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tar_int_id" Type="Int32" />
+          <Property Name="not_int_id" Type="Int32" />
+          <NavigationProperty Name="TBL_MOV_NOTA" Relationship="Self.FK_TBL_MOV_RELACION_NOTA_TAREA_TBL_MOV_NOTA" FromRole="TBL_MOV_RELACION_NOTA_TAREA" ToRole="TBL_MOV_NOTA" />
+          <NavigationProperty Name="TBL_MOV_TAREA" Relationship="Self.FK_TBL_MOV_RELACION_NOTA_TAREA_TBL_MOV_TAREA" FromRole="TBL_MOV_RELACION_NOTA_TAREA" ToRole="TBL_MOV_TAREA" />
+        </EntityType>
+        <EntityType Name="TBL_MOV_TAREA">
+          <Key>
+            <PropertyRef Name="tar_int_id" />
+          </Key>
+          <Property Name="tar_int_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tiptar_int_id" Type="Int32" Nullable="false" />
+          <Property Name="usr_int_id" Type="Int32" Nullable="false" />
+          <Property Name="tar_int_prioridad" Type="Int32" />
+          <Property Name="tar_dat_fchcreacion" Type="DateTime" Precision="3" />
+          <Property Name="tar_dat_fchmodificacion" Type="DateTime" Precision="3" />
+          <Property Name="tar_dat_fchlimite" Type="DateTime" Precision="3" />
+          <Property Name="tar_txt_detalle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="tar_int_estado" Type="Int32" />
+          <Property Name="tar_str_observacion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="tar_str_orden" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="tar_bit_anulado" Type="Int32" />
+          <NavigationProperty Name="TBL_MOV_RELACION_CLIENTE_TAREA" Relationship="Self.FK_TBL_MOV_RELACION_CLIENTE_TAREA_TBL_MOV_TAREA" FromRole="TBL_MOV_TAREA" ToRole="TBL_MOV_RELACION_CLIENTE_TAREA" />
+          <NavigationProperty Name="TBL_MOV_RELACION_NOTA_TAREA" Relationship="Self.FK_TBL_MOV_RELACION_NOTA_TAREA_TBL_MOV_TAREA" FromRole="TBL_MOV_TAREA" ToRole="TBL_MOV_RELACION_NOTA_TAREA" />
+          <NavigationProperty Name="TBL_MOV_TAREAS_TIPO" Relationship="Self.FK_TBL_MOV_TAREA_TBL_MOV_TAREAS_TIPO" FromRole="TBL_MOV_TAREA" ToRole="TBL_MOV_TAREAS_TIPO" />
+        </EntityType>
+        <EntityType Name="TBL_MOV_TAREAS_TIPO">
+          <Key>
+            <PropertyRef Name="tiptar_int_id" />
+          </Key>
+          <Property Name="tiptar_int_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tiptar_str_nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="tiptar_str_descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tiptar_int_estado" Type="Int32" />
+          <Property Name="tiptar_int_usrcreacion" Type="Int32" Nullable="false" />
+          <Property Name="tiptar_dat_fcreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="tiptar_int_usrmodif" Type="Int32" />
+          <Property Name="tiptar_dat_ultimamodif" Type="DateTime" Precision="3" />
+          <Property Name="tptar_bit_anulado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TBL_MOV_TAREA" Relationship="Self.FK_TBL_MOV_TAREA_TBL_MOV_TAREAS_TIPO" FromRole="TBL_MOV_TAREAS_TIPO" ToRole="TBL_MOV_TAREA" />
+        </EntityType>
+        <Association Name="FK_TBL_MOV_RELACION_NOTA_TAREA_TBL_MOV_NOTA">
+          <End Role="TBL_MOV_NOTA" Type="Self.TBL_MOV_NOTA" Multiplicity="0..1" />
+          <End Role="TBL_MOV_RELACION_NOTA_TAREA" Type="Self.TBL_MOV_RELACION_NOTA_TAREA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_MOV_NOTA">
+              <PropertyRef Name="not_int_id" />
+            </Principal>
+            <Dependent Role="TBL_MOV_RELACION_NOTA_TAREA">
+              <PropertyRef Name="not_int_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_MOV_RELACION_CLIENTE_TAREA_TBL_MOV_TAREA">
+          <End Role="TBL_MOV_TAREA" Type="Self.TBL_MOV_TAREA" Multiplicity="0..1" />
+          <End Role="TBL_MOV_RELACION_CLIENTE_TAREA" Type="Self.TBL_MOV_RELACION_CLIENTE_TAREA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_MOV_TAREA">
+              <PropertyRef Name="tar_int_id" />
+            </Principal>
+            <Dependent Role="TBL_MOV_RELACION_CLIENTE_TAREA">
+              <PropertyRef Name="tar_int_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_MOV_RELACION_NOTA_TAREA_TBL_MOV_TAREA">
+          <End Role="TBL_MOV_TAREA" Type="Self.TBL_MOV_TAREA" Multiplicity="0..1" />
+          <End Role="TBL_MOV_RELACION_NOTA_TAREA" Type="Self.TBL_MOV_RELACION_NOTA_TAREA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_MOV_TAREA">
+              <PropertyRef Name="tar_int_id" />
+            </Principal>
+            <Dependent Role="TBL_MOV_RELACION_NOTA_TAREA">
+              <PropertyRef Name="tar_int_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_MOV_TAREA_TBL_MOV_TAREAS_TIPO">
+          <End Role="TBL_MOV_TAREAS_TIPO" Type="Self.TBL_MOV_TAREAS_TIPO" Multiplicity="1" />
+          <End Role="TBL_MOV_TAREA" Type="Self.TBL_MOV_TAREA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_MOV_TAREAS_TIPO">
+              <PropertyRef Name="tiptar_int_id" />
+            </Principal>
+            <Dependent Role="TBL_MOV_TAREA">
+              <PropertyRef Name="tiptar_int_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBAUSA_PYMOVILEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TBL_MOV_NOTA" EntityType="Self.TBL_MOV_NOTA" />
+          <EntitySet Name="TBL_MOV_RELACION_CLIENTE_TAREA" EntityType="Self.TBL_MOV_RELACION_CLIENTE_TAREA" />
+          <EntitySet Name="TBL_MOV_RELACION_NOTA_TAREA" EntityType="Self.TBL_MOV_RELACION_NOTA_TAREA" />
+          <EntitySet Name="TBL_MOV_TAREA" EntityType="Self.TBL_MOV_TAREA" />
+          <EntitySet Name="TBL_MOV_TAREAS_TIPO" EntityType="Self.TBL_MOV_TAREAS_TIPO" />
+          <AssociationSet Name="FK_TBL_MOV_RELACION_NOTA_TAREA_TBL_MOV_NOTA" Association="Self.FK_TBL_MOV_RELACION_NOTA_TAREA_TBL_MOV_NOTA">
+            <End Role="TBL_MOV_NOTA" EntitySet="TBL_MOV_NOTA" />
+            <End Role="TBL_MOV_RELACION_NOTA_TAREA" EntitySet="TBL_MOV_RELACION_NOTA_TAREA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_MOV_RELACION_CLIENTE_TAREA_TBL_MOV_TAREA" Association="Self.FK_TBL_MOV_RELACION_CLIENTE_TAREA_TBL_MOV_TAREA">
+            <End Role="TBL_MOV_TAREA" EntitySet="TBL_MOV_TAREA" />
+            <End Role="TBL_MOV_RELACION_CLIENTE_TAREA" EntitySet="TBL_MOV_RELACION_CLIENTE_TAREA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_MOV_RELACION_NOTA_TAREA_TBL_MOV_TAREA" Association="Self.FK_TBL_MOV_RELACION_NOTA_TAREA_TBL_MOV_TAREA">
+            <End Role="TBL_MOV_TAREA" EntitySet="TBL_MOV_TAREA" />
+            <End Role="TBL_MOV_RELACION_NOTA_TAREA" EntitySet="TBL_MOV_RELACION_NOTA_TAREA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_MOV_TAREA_TBL_MOV_TAREAS_TIPO" Association="Self.FK_TBL_MOV_TAREA_TBL_MOV_TAREAS_TIPO">
+            <End Role="TBL_MOV_TAREAS_TIPO" EntitySet="TBL_MOV_TAREAS_TIPO" />
+            <End Role="TBL_MOV_TAREA" EntitySet="TBL_MOV_TAREA" />
+          </AssociationSet>
+          <FunctionImport Name="PA_MOV_CLIENTE_CONDICIONPAGO" ReturnType="Collection(DBAUSA_PYMOVILModel.PA_MOV_CLIENTE_CONDICIONPAGO_Result)">
+            <Parameter Name="cliente" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_CLIENTE_CONDICIONPAGO_DETALLE" ReturnType="Collection(DBAUSA_PYMOVILModel.PA_MOV_CLIENTE_CONDICIONPAGO_DETALLE_Result)">
+            <Parameter Name="cliente" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_CLIENTE_CONTACTOS" ReturnType="Collection(DBAUSA_PYMOVILModel.PA_MOV_CLIENTE_CONTACTOS_Result)">
+            <Parameter Name="cliente" Mode="In" Type="Int32" />
+            <Parameter Name="contacto" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_CLIENTE_CONTACTOS_TELEFONOS" ReturnType="Collection(DBAUSA_PYMOVILModel.PA_MOV_CLIENTE_CONTACTOS_TELEFONOS_Result)">
+            <Parameter Name="cliente" Mode="In" Type="Int32" />
+            <Parameter Name="contacto" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_CLIENTE_DESPACHO" ReturnType="Collection(DBAUSA_PYMOVILModel.PA_MOV_CLIENTE_DESPACHO_Result)">
+            <Parameter Name="orden" Mode="In" Type="Int32" />
+            <Parameter Name="referencia" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_CLIENTE_MOROSIDAD_UTILIZACION_LINEA" ReturnType="Collection(DBAUSA_PYMOVILModel.PA_MOV_CLIENTE_MOROSIDAD_UTILIZACION_LINEA_Result)">
+            <Parameter Name="cliente" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_CLIENTE_PARTICIPACION" ReturnType="Collection(DBAUSA_PYMOVILModel.PA_MOV_CLIENTE_PARTICIPACION_Result)">
+            <Parameter Name="cliente" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_CLIENTE_PARTICIPACION_DETALLE" ReturnType="Collection(DBAUSA_PYMOVILModel.PA_MOV_CLIENTE_PARTICIPACION_DETALLE_Result)">
+            <Parameter Name="cliente" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_CLIENTE_TARIFAS" ReturnType="Collection(DBAUSA_PYMOVILModel.PA_MOV_CLIENTE_TARIFAS_Result)">
+            <Parameter Name="cliente" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_DEVOLVER_IDUSUARIO" ReturnType="Collection(Int32)">
+            <Parameter Name="usr" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_NOTA_DELETE">
+            <Parameter Name="not_int_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_NOTA_INSERT" ReturnType="Collection(Decimal)">
+            <Parameter Name="not_str_archivo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_NOTA_SELECT" ReturnType="Collection(DBAUSA_PYMOVILModel.PA_MOV_NOTA_SELECT_Result)">
+            <Parameter Name="not_int_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_NOTA_UPDATE">
+            <Parameter Name="not_int_id" Mode="In" Type="Int32" />
+            <Parameter Name="not_str_archivo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_NOTA_UPDATE_2">
+            <Parameter Name="not_str_archivo" Mode="In" Type="String" />
+            <Parameter Name="new_str_archivo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_OPERACIONES_DESPACHADORES" ReturnType="Collection(DBAUSA_PYMOVILModel.PA_MOV_OPERACIONES_DESPACHADORES_Result)" />
+          <FunctionImport Name="PA_MOV_OPERACIONES_DETALLE" ReturnType="Collection(DBAUSA_PYMOVILModel.PA_MOV_OPERACIONES_DETALLE_Result)">
+            <Parameter Name="ope_int_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_OPERACIONES_INICIAR">
+            <Parameter Name="ope_int_id" Mode="In" Type="Int32" />
+            <Parameter Name="usr_int_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_OPERACIONES_LISTAR" ReturnType="Collection(DBAUSA_PYMOVILModel.PA_MOV_OPERACIONES_LISTAR_Result)">
+            <Parameter Name="ope_int_despachador" Mode="In" Type="Int32" />
+            <Parameter Name="cli_int_id" Mode="In" Type="Int32" />
+            <Parameter Name="ord_int_id" Mode="In" Type="Int32" />
+            <Parameter Name="fecha" Mode="In" Type="DateTime" />
+            <Parameter Name="alm_int_id" Mode="In" Type="Int32" />
+            <Parameter Name="estado" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_OPERACIONES_OPCIONES" ReturnType="Collection(DBAUSA_PYMOVILModel.PA_MOV_OPERACIONES_OPCIONES_Result)">
+            <Parameter Name="ope_int_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_OPERACIONES_PERMISOOK">
+            <Parameter Name="ope_int_id" Mode="In" Type="Int32" />
+            <Parameter Name="usr_int_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_OPERACIONES_REASGINACION">
+            <Parameter Name="ope_int_id" Mode="In" Type="Int32" />
+            <Parameter Name="ope_int_despachador" Mode="In" Type="Int32" />
+            <Parameter Name="ope_str_observacion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_OPERACIONES_SOLICITARTRANSPORTE">
+            <Parameter Name="ope_int_id" Mode="In" Type="Int32" />
+            <Parameter Name="usr_int_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_OPERACIONES_TERMINAR">
+            <Parameter Name="ope_int_id" Mode="In" Type="Int32" />
+            <Parameter Name="usr_int_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_ORDEN_ID" ReturnType="Collection(Int32)">
+            <Parameter Name="anio" Mode="In" Type="Int32" />
+            <Parameter Name="numero" Mode="In" Type="String" />
+            <Parameter Name="cliente" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_RELACION_CLIENTE_TAREA_DELETE">
+            <Parameter Name="tar_int_id" Mode="In" Type="Int32" />
+            <Parameter Name="cli_int_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_RELACION_CLIENTE_TAREA_INSERT" ReturnType="Collection(Decimal)">
+            <Parameter Name="tar_int_id" Mode="In" Type="Int32" />
+            <Parameter Name="cli_int_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_RELACION_CLIENTE_TAREA_SELECT" ReturnType="Collection(DBAUSA_PYMOVILModel.PA_MOV_RELACION_CLIENTE_TAREA_SELECT_Result)">
+            <Parameter Name="tar_int_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_RELACION_CLIENTE_TAREA_UPDATE">
+            <Parameter Name="rel_int_id" Mode="In" Type="Int32" />
+            <Parameter Name="tar_int_id" Mode="In" Type="Int32" />
+            <Parameter Name="cli_int_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_RELACION_NOTA_TAREA_DELETE">
+            <Parameter Name="tar_int_id" Mode="In" Type="Int32" />
+            <Parameter Name="not_int_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_RELACION_NOTA_TAREA_INSERT" ReturnType="Collection(Decimal)">
+            <Parameter Name="tar_int_id" Mode="In" Type="Int32" />
+            <Parameter Name="not_int_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_RELACION_NOTA_TAREA_SELECT" ReturnType="Collection(DBAUSA_PYMOVILModel.PA_MOV_RELACION_NOTA_TAREA_SELECT_Result)">
+            <Parameter Name="tar_int_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_RELACION_NOTA_TAREA_UPDATE">
+            <Parameter Name="rel_int_id" Mode="In" Type="Int32" />
+            <Parameter Name="tar_int_id" Mode="In" Type="Int32" />
+            <Parameter Name="not_int_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_TAREA_DELETE">
+            <Parameter Name="tar_int_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_TAREA_INSERT" ReturnType="Collection(Decimal)">
+            <Parameter Name="tiptar_int_id" Mode="In" Type="Int32" />
+            <Parameter Name="usr_int_id" Mode="In" Type="Int32" />
+            <Parameter Name="tar_int_prioridad" Mode="In" Type="Int32" />
+            <Parameter Name="tar_dat_fchlimite" Mode="In" Type="DateTime" />
+            <Parameter Name="tar_txt_detalle" Mode="In" Type="String" />
+            <Parameter Name="tar_int_estado" Mode="In" Type="Int32" />
+            <Parameter Name="tar_str_observacion" Mode="In" Type="String" />
+            <Parameter Name="tar_str_orden" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_TAREA_SELECT" ReturnType="Collection(DBAUSA_PYMOVILModel.PA_MOV_TAREA_SELECT_Result)">
+            <Parameter Name="usr_int_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_TAREA_TIPO_SELECT" ReturnType="Collection(DBAUSA_PYMOVILModel.PA_MOV_TAREA_TIPO_SELECT_Result)" />
+          <FunctionImport Name="PA_MOV_TAREA_UPDATE">
+            <Parameter Name="tar_int_id" Mode="In" Type="Int32" />
+            <Parameter Name="tiptar_int_id" Mode="In" Type="Int32" />
+            <Parameter Name="usr_int_id" Mode="In" Type="Int32" />
+            <Parameter Name="tar_int_prioridad" Mode="In" Type="Int32" />
+            <Parameter Name="tar_dat_fchlimite" Mode="In" Type="DateTime" />
+            <Parameter Name="tar_txt_detalle" Mode="In" Type="String" />
+            <Parameter Name="tar_int_estado" Mode="In" Type="Int32" />
+            <Parameter Name="tar_str_observacion" Mode="In" Type="String" />
+            <Parameter Name="tar_str_orden" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_TAREAS_TIPO_DELETE">
+            <Parameter Name="tiptar_int_id" Mode="In" Type="Int32" />
+            <Parameter Name="tiptar_int_usrcreacion" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_TAREAS_TIPO_INSERT">
+            <Parameter Name="tiptar_str_nombre" Mode="In" Type="String" />
+            <Parameter Name="tiptar_str_descripcion" Mode="In" Type="String" />
+            <Parameter Name="tiptar_int_estado" Mode="In" Type="Int32" />
+            <Parameter Name="tiptar_int_usrmodif" Mode="In" Type="Int32" />
+            <Parameter Name="tiptar_int_usrcreacion" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_TAREAS_TIPO_UPDATE">
+            <Parameter Name="tiptar_int_id" Mode="In" Type="Int32" />
+            <Parameter Name="tiptar_str_nombre" Mode="In" Type="String" />
+            <Parameter Name="tiptar_str_descripcion" Mode="In" Type="String" />
+            <Parameter Name="tiptar_int_estado" Mode="In" Type="Int32" />
+            <Parameter Name="tiptar_int_usrmodif" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_USUARIO_CARTERA_CLIENTES" ReturnType="Collection(DBAUSA_PYMOVILModel.PA_MOV_USUARIO_CARTERA_CLIENTES_Result)">
+            <Parameter Name="usr" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_USUARIO_DATOS" ReturnType="Collection(String)">
+            <Parameter Name="usr_int_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_USUARIO_ROL" ReturnType="Collection(DBAUSA_PYMOVILModel.PA_MOV_USUARIO_ROL_Result)">
+            <Parameter Name="usr" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MOV_VALIDAR_USUARIO_EXTERNO" ReturnType="Collection(Int32)">
+            <Parameter Name="usr" Mode="In" Type="String" />
+            <Parameter Name="clave" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="PA_MOV_CLIENTE_CONDICIONPAGO_Result">
+          <Property Type="Int32" Name="ClienteID" Nullable="false" />
+          <Property Type="String" Name="ClienteRazonSocial" Nullable="false" MaxLength="250" />
+          <Property Type="Decimal" Name="LíneaFacturaAUSA" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="PlazoFacturaAUSA" Nullable="true" />
+          <Property Type="Decimal" Name="LíneaLetrasAUSA" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="PlazoLetrasAUSA" Nullable="true" />
+          <Property Type="DateTime" Name="FechaModificación" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="PA_MOV_CLIENTE_CONDICIONPAGO_DETALLE_Result">
+          <Property Type="Int32" Name="ClienteID" Nullable="false" />
+          <Property Type="String" Name="Compania" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ClienteRazonSocial" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="LineaNegocio" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Servicio" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="DiasPago" Nullable="true" />
+          <Property Type="String" Name="HastaMonto" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Moneda" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="LineaCredito" Nullable="true" Precision="18" Scale="0" />
+        </ComplexType>
+        <ComplexType Name="PA_MOV_CLIENTE_CONTACTOS_Result">
+          <Property Type="Int32" Name="ClienteID" Nullable="false" />
+          <Property Type="String" Name="ClienteRazonSocial" Nullable="false" MaxLength="250" />
+          <Property Type="Int32" Name="ContactoID" Nullable="true" />
+          <Property Type="String" Name="ContactoNombre" Nullable="false" MaxLength="201" />
+          <Property Type="String" Name="ContactoEmail" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Cargo" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="ContactoFechaCumpleanos" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="PA_MOV_CLIENTE_CONTACTOS_TELEFONOS_Result">
+          <Property Type="Int32" Name="TelefonoID" Nullable="false" />
+          <Property Type="Int32" Name="ContactoID" Nullable="false" />
+          <Property Type="String" Name="ContactoNombre" Nullable="false" MaxLength="201" />
+          <Property Type="String" Name="Tipo" Nullable="false" MaxLength="7" />
+          <Property Type="String" Name="Numero" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="PA_MOV_CLIENTE_DESPACHO_Result">
+          <Property Type="Int32" Name="Año" Nullable="true" />
+          <Property Type="String" Name="Orden" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="Referencia" Nullable="true" MaxLength="600" />
+          <Property Type="String" Name="Canal" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="Via" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Regimen" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="TipoDespacho" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Mercaderia" Nullable="true" MaxLength="250" />
+          <Property Type="DateTime" Name="Apertura" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="ETAEstimado" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="LlegadaNave" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="TerminoDescarga" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="DocumentosCompletos" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="FechaNumeracion" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="FechaCancelacion" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="AforoCulminado" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="LevanteAutorizado" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="RetiroCulminado" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="PA_MOV_CLIENTE_MOROSIDAD_UTILIZACION_LINEA_Result">
+          <Property Type="Int32" Name="ClienteID" Nullable="false" />
+          <Property Type="String" Name="ClienteRazonSocial" Nullable="false" MaxLength="250" />
+          <Property Type="Decimal" Name="DeudaVencida" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="PlazoDePago" Nullable="true" />
+          <Property Type="Decimal" Name="LíneaAsignada" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="UtilizacionActual" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="DiferenciaDeLineas" Nullable="true" Precision="19" Scale="2" />
+          <Property Type="Decimal" Name="PorcUtilizacionDeLinea" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="UsoDeLineaPromedioUltSeisMeses" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="PorcUsoDeLineaPromedioUltSeisMeses" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="PA_MOV_CLIENTE_PARTICIPACION_Result">
+          <Property Type="Int32" Name="ClienteID" Nullable="false" />
+          <Property Type="String" Name="ClienteRazonSocial" Nullable="false" MaxLength="250" />
+          <Property Type="Decimal" Name="IPDmesVigente" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="IPDMesAnterior" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="IPDUltimos3Meses" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="AduanaIngresoMesVigente" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="AduanaIngresoMesAnterior" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="AduanaIngresoUltimos3Meses" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="HitsAOL" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="PA_MOV_CLIENTE_PARTICIPACION_DETALLE_Result">
+          <Property Type="Int32" Name="ClienteID" Nullable="false" />
+          <Property Type="String" Name="ClienteRazonSocial" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Agente" Nullable="true" MaxLength="300" />
+          <Property Type="Int32" Name="NumDespachosVigentes" Nullable="true" />
+          <Property Type="Decimal" Name="PorcDespachosVigentes" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="NumDespachosAnterior" Nullable="true" />
+          <Property Type="Decimal" Name="PorcDespachosAnterior" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="FOBVigente" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="PorcFOBVigente" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="FOBAnterior" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="PorcFOBAnterior" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="CIFVigente" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="PorcCIFVigente" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="CIFAnterior" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="PorcCIFAnterior" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="PA_MOV_CLIENTE_TARIFAS_Result">
+          <Property Type="Int32" Name="ClienteID" Nullable="false" />
+          <Property Type="String" Name="ClienteRazonSocial" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Servicio" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Observacion" Nullable="true" MaxLength="Max" />
+        </ComplexType>
+        <ComplexType Name="PA_MOV_NOTA_SELECT_Result">
+          <Property Type="Int32" Name="not_int_id" Nullable="false" />
+          <Property Type="String" Name="not_str_archivo" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="PA_MOV_OPERACIONES_DESPACHADORES_Result">
+          <Property Type="Int32" Name="idDespachador" Nullable="false" />
+          <Property Type="String" Name="nomDespachador" Nullable="true" MaxLength="201" />
+        </ComplexType>
+        <ComplexType Name="PA_MOV_OPERACIONES_DETALLE_Result">
+          <Property Type="DateTime" Name="FechaDeActualizacion" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="FechaCreacion" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="NumOperacion" Nullable="false" />
+          <Property Type="String" Name="Cliente" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Despachador" Nullable="true" MaxLength="201" />
+          <Property Type="String" Name="Almacen" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Orden" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="Detalle" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="TipoCarga" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="Tamano" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Tipo" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="FechaEntrega" Nullable="true" Precision="23" />
+          <Property Type="String" Name="HoraEntrega" Nullable="true" MaxLength="10" />
+          <Property Type="Decimal" Name="Cantidad" Nullable="false" Precision="16" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="PA_MOV_OPERACIONES_LISTAR_Result">
+          <Property Type="DateTime" Name="FechaDeActualizacion" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="FechaCreacionOperacion" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ClienteAlias" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Orden" Nullable="true" MaxLength="37" />
+          <Property Type="Int32" Name="NumOperacion" Nullable="false" />
+          <Property Type="String" Name="Despachador" Nullable="true" MaxLength="201" />
+          <Property Type="String" Name="Almacen" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Operacion" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Detalle" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="FechaInicio" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="HoraInicio" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="TiempoTranscurrido" Nullable="true" />
+          <Property Type="String" Name="Estado" Nullable="true" MaxLength="25" />
+          <Property Type="Int32" Name="OperacionID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="PA_MOV_OPERACIONES_OPCIONES_Result">
+          <Property Type="Int32" Name="IdOperacion" Nullable="true" />
+          <Property Type="String" Name="Operacion" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="IdOpcion" Nullable="true" />
+          <Property Type="String" Name="Opcion" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Habilitado" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="PA_MOV_RELACION_CLIENTE_TAREA_SELECT_Result">
+          <Property Type="Int32" Name="rel_int_id" Nullable="false" />
+          <Property Type="Int32" Name="tar_int_id" Nullable="true" />
+          <Property Type="Int32" Name="cli_int_id" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="PA_MOV_RELACION_NOTA_TAREA_SELECT_Result">
+          <Property Type="Int32" Name="idrelacion" Nullable="false" />
+          <Property Type="Int32" Name="idtarea" Nullable="true" />
+          <Property Type="Int32" Name="idnota" Nullable="true" />
+          <Property Type="String" Name="archivo" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="PA_MOV_TAREA_SELECT_Result">
+          <Property Type="Int32" Name="tar_int_id" Nullable="false" />
+          <Property Type="Int32" Name="tiptar_int_id" Nullable="false" />
+          <Property Type="String" Name="tiptar_str_nombre" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="tipotarea" Nullable="true" MaxLength="467" />
+          <Property Type="Int32" Name="usr_int_id" Nullable="false" />
+          <Property Type="String" Name="Usuario" Nullable="true" MaxLength="201" />
+          <Property Type="Int32" Name="tar_int_prioridad" Nullable="true" />
+          <Property Type="DateTime" Name="tar_dat_fchcreacion" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="tar_dat_fchmodificacion" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="tar_dat_fchlimite" Nullable="true" Precision="23" />
+          <Property Type="String" Name="tar_txt_detalle" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="tar_int_estado" Nullable="true" />
+          <Property Type="String" Name="tar_str_observacion" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="tar_str_orden" Nullable="true" MaxLength="15" />
+        </ComplexType>
+        <ComplexType Name="PA_MOV_TAREA_TIPO_SELECT_Result">
+          <Property Type="Int32" Name="tiptar_int_id" Nullable="false" />
+          <Property Type="Int32" Name="tiptar_int_usrcreacion" Nullable="false" />
+          <Property Type="String" Name="tiptar_str_nombre" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="tiptar_str_descripcion" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="tiptar_int_estado" Nullable="true" />
+          <Property Type="Int32" Name="tiptar_int_usrmodif" Nullable="true" />
+          <Property Type="String" Name="usrmodif" Nullable="true" MaxLength="201" />
+          <Property Type="DateTime" Name="tiptar_dat_ultimamodif" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="tptar_bit_anulado" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="PA_MOV_USUARIO_CARTERA_CLIENTES_Result">
+          <Property Type="Int32" Name="ClienteID" Nullable="false" />
+          <Property Type="String" Name="ClienteRazonSocial" Nullable="false" MaxLength="250" />
+          <Property Type="DateTime" Name="FchModificacion" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="PA_MOV_USUARIO_ROL_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Sistema" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Alias" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Rol" Nullable="false" MaxLength="100" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBAUSA_PYMOVILModelStoreContainer" CdmEntityContainer="DBAUSA_PYMOVILEntities">
+          <EntitySetMapping Name="TBL_MOV_NOTA">
+            <EntityTypeMapping TypeName="DBAUSA_PYMOVILModel.TBL_MOV_NOTA">
+              <MappingFragment StoreEntitySet="TBL_MOV_NOTA">
+                <ScalarProperty Name="not_int_id" ColumnName="not_int_id" />
+                <ScalarProperty Name="not_str_archivo" ColumnName="not_str_archivo" />
+                <ScalarProperty Name="not_bit_anulado" ColumnName="not_bit_anulado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_MOV_RELACION_CLIENTE_TAREA">
+            <EntityTypeMapping TypeName="DBAUSA_PYMOVILModel.TBL_MOV_RELACION_CLIENTE_TAREA">
+              <MappingFragment StoreEntitySet="TBL_MOV_RELACION_CLIENTE_TAREA">
+                <ScalarProperty Name="rel_int_id" ColumnName="rel_int_id" />
+                <ScalarProperty Name="tar_int_id" ColumnName="tar_int_id" />
+                <ScalarProperty Name="cli_int_id" ColumnName="cli_int_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_MOV_RELACION_NOTA_TAREA">
+            <EntityTypeMapping TypeName="DBAUSA_PYMOVILModel.TBL_MOV_RELACION_NOTA_TAREA">
+              <MappingFragment StoreEntitySet="TBL_MOV_RELACION_NOTA_TAREA">
+                <ScalarProperty Name="rel_int_id" ColumnName="rel_int_id" />
+                <ScalarProperty Name="tar_int_id" ColumnName="tar_int_id" />
+                <ScalarProperty Name="not_int_id" ColumnName="not_int_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_MOV_TAREA">
+            <EntityTypeMapping TypeName="DBAUSA_PYMOVILModel.TBL_MOV_TAREA">
+              <MappingFragment StoreEntitySet="TBL_MOV_TAREA">
+                <ScalarProperty Name="tar_int_id" ColumnName="tar_int_id" />
+                <ScalarProperty Name="tiptar_int_id" ColumnName="tiptar_int_id" />
+                <ScalarProperty Name="usr_int_id" ColumnName="usr_int_id" />
+                <ScalarProperty Name="tar_int_prioridad" ColumnName="tar_int_prioridad" />
+                <ScalarProperty Name="tar_dat_fchcreacion" ColumnName="tar_dat_fchcreacion" />
+                <ScalarProperty Name="tar_dat_fchmodificacion" ColumnName="tar_dat_fchmodificacion" />
+                <ScalarProperty Name="tar_dat_fchlimite" ColumnName="tar_dat_fchlimite" />
+                <ScalarProperty Name="tar_txt_detalle" ColumnName="tar_txt_detalle" />
+                <ScalarProperty Name="tar_int_estado" ColumnName="tar_int_estado" />
+                <ScalarProperty Name="tar_str_observacion" ColumnName="tar_str_observacion" />
+                <ScalarProperty Name="tar_str_orden" ColumnName="tar_str_orden" />
+                <ScalarProperty Name="tar_bit_anulado" ColumnName="tar_bit_anulado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_MOV_TAREAS_TIPO">
+            <EntityTypeMapping TypeName="DBAUSA_PYMOVILModel.TBL_MOV_TAREAS_TIPO">
+              <MappingFragment StoreEntitySet="TBL_MOV_TAREAS_TIPO">
+                <ScalarProperty Name="tiptar_int_id" ColumnName="tiptar_int_id" />
+                <ScalarProperty Name="tiptar_str_nombre" ColumnName="tiptar_str_nombre" />
+                <ScalarProperty Name="tiptar_str_descripcion" ColumnName="tiptar_str_descripcion" />
+                <ScalarProperty Name="tiptar_int_estado" ColumnName="tiptar_int_estado" />
+                <ScalarProperty Name="tiptar_int_usrcreacion" ColumnName="tiptar_int_usrcreacion" />
+                <ScalarProperty Name="tiptar_dat_fcreacion" ColumnName="tiptar_dat_fcreacion" />
+                <ScalarProperty Name="tiptar_int_usrmodif" ColumnName="tiptar_int_usrmodif" />
+                <ScalarProperty Name="tiptar_dat_ultimamodif" ColumnName="tiptar_dat_ultimamodif" />
+                <ScalarProperty Name="tptar_bit_anulado" ColumnName="tptar_bit_anulado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="PA_MOV_CLIENTE_CONDICIONPAGO" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_CLIENTE_CONDICIONPAGO">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBAUSA_PYMOVILModel.PA_MOV_CLIENTE_CONDICIONPAGO_Result">
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+                <ScalarProperty Name="ClienteRazonSocial" ColumnName="ClienteRazonSocial" />
+                <ScalarProperty Name="LíneaFacturaAUSA" ColumnName="LíneaFacturaAUSA" />
+                <ScalarProperty Name="PlazoFacturaAUSA" ColumnName="PlazoFacturaAUSA" />
+                <ScalarProperty Name="LíneaLetrasAUSA" ColumnName="LíneaLetrasAUSA" />
+                <ScalarProperty Name="PlazoLetrasAUSA" ColumnName="PlazoLetrasAUSA" />
+                <ScalarProperty Name="FechaModificación" ColumnName="FechaModificación" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PA_MOV_CLIENTE_CONDICIONPAGO_DETALLE" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_CLIENTE_CONDICIONPAGO_DETALLE">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBAUSA_PYMOVILModel.PA_MOV_CLIENTE_CONDICIONPAGO_DETALLE_Result">
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+                <ScalarProperty Name="Compania" ColumnName="Compania" />
+                <ScalarProperty Name="ClienteRazonSocial" ColumnName="ClienteRazonSocial" />
+                <ScalarProperty Name="LineaNegocio" ColumnName="LineaNegocio" />
+                <ScalarProperty Name="Servicio" ColumnName="Servicio" />
+                <ScalarProperty Name="DiasPago" ColumnName="DiasPago" />
+                <ScalarProperty Name="HastaMonto" ColumnName="HastaMonto" />
+                <ScalarProperty Name="Moneda" ColumnName="Moneda" />
+                <ScalarProperty Name="LineaCredito" ColumnName="LineaCredito" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PA_MOV_CLIENTE_CONTACTOS" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_CLIENTE_CONTACTOS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBAUSA_PYMOVILModel.PA_MOV_CLIENTE_CONTACTOS_Result">
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+                <ScalarProperty Name="ClienteRazonSocial" ColumnName="ClienteRazonSocial" />
+                <ScalarProperty Name="ContactoID" ColumnName="ContactoID" />
+                <ScalarProperty Name="ContactoNombre" ColumnName="ContactoNombre" />
+                <ScalarProperty Name="ContactoEmail" ColumnName="ContactoEmail" />
+                <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+                <ScalarProperty Name="ContactoFechaCumpleanos" ColumnName="ContactoFechaCumpleanos" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PA_MOV_CLIENTE_CONTACTOS_TELEFONOS" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_CLIENTE_CONTACTOS_TELEFONOS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBAUSA_PYMOVILModel.PA_MOV_CLIENTE_CONTACTOS_TELEFONOS_Result">
+                <ScalarProperty Name="TelefonoID" ColumnName="TelefonoID" />
+                <ScalarProperty Name="ContactoID" ColumnName="ContactoID" />
+                <ScalarProperty Name="ContactoNombre" ColumnName="ContactoNombre" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PA_MOV_CLIENTE_DESPACHO" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_CLIENTE_DESPACHO">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBAUSA_PYMOVILModel.PA_MOV_CLIENTE_DESPACHO_Result">
+                <ScalarProperty Name="Año" ColumnName="Año" />
+                <ScalarProperty Name="Orden" ColumnName="Orden" />
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+                <ScalarProperty Name="Canal" ColumnName="Canal" />
+                <ScalarProperty Name="Via" ColumnName="Via" />
+                <ScalarProperty Name="Regimen" ColumnName="Regimen" />
+                <ScalarProperty Name="TipoDespacho" ColumnName="TipoDespacho" />
+                <ScalarProperty Name="Mercaderia" ColumnName="Mercaderia" />
+                <ScalarProperty Name="Apertura" ColumnName="Apertura" />
+                <ScalarProperty Name="ETAEstimado" ColumnName="ETAEstimado" />
+                <ScalarProperty Name="LlegadaNave" ColumnName="LlegadaNave" />
+                <ScalarProperty Name="TerminoDescarga" ColumnName="TerminoDescarga" />
+                <ScalarProperty Name="DocumentosCompletos" ColumnName="DocumentosCompletos" />
+                <ScalarProperty Name="FechaNumeracion" ColumnName="FechaNumeracion" />
+                <ScalarProperty Name="FechaCancelacion" ColumnName="FechaCancelacion" />
+                <ScalarProperty Name="AforoCulminado" ColumnName="AforoCulminado" />
+                <ScalarProperty Name="LevanteAutorizado" ColumnName="LevanteAutorizado" />
+                <ScalarProperty Name="RetiroCulminado" ColumnName="RetiroCulminado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PA_MOV_CLIENTE_MOROSIDAD_UTILIZACION_LINEA" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_CLIENTE_MOROSIDAD_UTILIZACION_LINEA">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBAUSA_PYMOVILModel.PA_MOV_CLIENTE_MOROSIDAD_UTILIZACION_LINEA_Result">
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+                <ScalarProperty Name="ClienteRazonSocial" ColumnName="ClienteRazonSocial" />
+                <ScalarProperty Name="DeudaVencida" ColumnName="DeudaVencida" />
+                <ScalarProperty Name="PlazoDePago" ColumnName="PlazoDePago" />
+                <ScalarProperty Name="LíneaAsignada" ColumnName="LíneaAsignada" />
+                <ScalarProperty Name="UtilizacionActual" ColumnName="UtilizacionActual" />
+                <ScalarProperty Name="DiferenciaDeLineas" ColumnName="DiferenciaDeLineas" />
+                <ScalarProperty Name="PorcUtilizacionDeLinea" ColumnName="PorcUtilizacionDeLinea" />
+                <ScalarProperty Name="UsoDeLineaPromedioUltSeisMeses" ColumnName="UsoDeLineaPromedioUltSeisMeses" />
+                <ScalarProperty Name="PorcUsoDeLineaPromedioUltSeisMeses" ColumnName="PorcUsoDeLineaPromedioUltSeisMeses" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PA_MOV_CLIENTE_PARTICIPACION" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_CLIENTE_PARTICIPACION">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBAUSA_PYMOVILModel.PA_MOV_CLIENTE_PARTICIPACION_Result">
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+                <ScalarProperty Name="ClienteRazonSocial" ColumnName="ClienteRazonSocial" />
+                <ScalarProperty Name="IPDmesVigente" ColumnName="IPDmesVigente" />
+                <ScalarProperty Name="IPDMesAnterior" ColumnName="IPDMesAnterior" />
+                <ScalarProperty Name="IPDUltimos3Meses" ColumnName="IPDUltimos3Meses" />
+                <ScalarProperty Name="AduanaIngresoMesVigente" ColumnName="AduanaIngresoMesVigente" />
+                <ScalarProperty Name="AduanaIngresoMesAnterior" ColumnName="AduanaIngresoMesAnterior" />
+                <ScalarProperty Name="AduanaIngresoUltimos3Meses" ColumnName="AduanaIngresoUltimos3Meses" />
+                <ScalarProperty Name="HitsAOL" ColumnName="HitsAOL" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PA_MOV_CLIENTE_PARTICIPACION_DETALLE" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_CLIENTE_PARTICIPACION_DETALLE">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBAUSA_PYMOVILModel.PA_MOV_CLIENTE_PARTICIPACION_DETALLE_Result">
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+                <ScalarProperty Name="ClienteRazonSocial" ColumnName="ClienteRazonSocial" />
+                <ScalarProperty Name="Agente" ColumnName="Agente" />
+                <ScalarProperty Name="NumDespachosVigentes" ColumnName="NumDespachosVigentes" />
+                <ScalarProperty Name="PorcDespachosVigentes" ColumnName="PorcDespachosVigentes" />
+                <ScalarProperty Name="NumDespachosAnterior" ColumnName="NumDespachosAnterior" />
+                <ScalarProperty Name="PorcDespachosAnterior" ColumnName="PorcDespachosAnterior" />
+                <ScalarProperty Name="FOBVigente" ColumnName="FOBVigente" />
+                <ScalarProperty Name="PorcFOBVigente" ColumnName="PorcFOBVigente" />
+                <ScalarProperty Name="FOBAnterior" ColumnName="FOBAnterior" />
+                <ScalarProperty Name="PorcFOBAnterior" ColumnName="PorcFOBAnterior" />
+                <ScalarProperty Name="CIFVigente" ColumnName="CIFVigente" />
+                <ScalarProperty Name="PorcCIFVigente" ColumnName="PorcCIFVigente" />
+                <ScalarProperty Name="CIFAnterior" ColumnName="CIFAnterior" />
+                <ScalarProperty Name="PorcCIFAnterior" ColumnName="PorcCIFAnterior" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PA_MOV_CLIENTE_TARIFAS" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_CLIENTE_TARIFAS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBAUSA_PYMOVILModel.PA_MOV_CLIENTE_TARIFAS_Result">
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+                <ScalarProperty Name="ClienteRazonSocial" ColumnName="ClienteRazonSocial" />
+                <ScalarProperty Name="Servicio" ColumnName="Servicio" />
+                <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PA_MOV_DEVOLVER_IDUSUARIO" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_DEVOLVER_IDUSUARIO" />
+          <FunctionImportMapping FunctionImportName="PA_MOV_NOTA_DELETE" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_NOTA_DELETE" />
+          <FunctionImportMapping FunctionImportName="PA_MOV_NOTA_INSERT" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_NOTA_INSERT" />
+          <FunctionImportMapping FunctionImportName="PA_MOV_NOTA_SELECT" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_NOTA_SELECT">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBAUSA_PYMOVILModel.PA_MOV_NOTA_SELECT_Result">
+                <ScalarProperty Name="not_int_id" ColumnName="not_int_id" />
+                <ScalarProperty Name="not_str_archivo" ColumnName="not_str_archivo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PA_MOV_NOTA_UPDATE" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_NOTA_UPDATE" />
+          <FunctionImportMapping FunctionImportName="PA_MOV_NOTA_UPDATE_2" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_NOTA_UPDATE_2" />
+          <FunctionImportMapping FunctionImportName="PA_MOV_OPERACIONES_DESPACHADORES" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_OPERACIONES_DESPACHADORES">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBAUSA_PYMOVILModel.PA_MOV_OPERACIONES_DESPACHADORES_Result">
+                <ScalarProperty Name="idDespachador" ColumnName="idDespachador" />
+                <ScalarProperty Name="nomDespachador" ColumnName="nomDespachador" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PA_MOV_OPERACIONES_DETALLE" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_OPERACIONES_DETALLE">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBAUSA_PYMOVILModel.PA_MOV_OPERACIONES_DETALLE_Result">
+                <ScalarProperty Name="FechaDeActualizacion" ColumnName="FechaDeActualizacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="NumOperacion" ColumnName="NumOperacion" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="Despachador" ColumnName="Despachador" />
+                <ScalarProperty Name="Almacen" ColumnName="Almacen" />
+                <ScalarProperty Name="Orden" ColumnName="Orden" />
+                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+                <ScalarProperty Name="TipoCarga" ColumnName="TipoCarga" />
+                <ScalarProperty Name="Tamano" ColumnName="Tamano" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="FechaEntrega" ColumnName="FechaEntrega" />
+                <ScalarProperty Name="HoraEntrega" ColumnName="HoraEntrega" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PA_MOV_OPERACIONES_INICIAR" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_OPERACIONES_INICIAR" />
+          <FunctionImportMapping FunctionImportName="PA_MOV_OPERACIONES_LISTAR" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_OPERACIONES_LISTAR">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBAUSA_PYMOVILModel.PA_MOV_OPERACIONES_LISTAR_Result">
+                <ScalarProperty Name="FechaDeActualizacion" ColumnName="FechaDeActualizacion" />
+                <ScalarProperty Name="FechaCreacionOperacion" ColumnName="FechaCreacionOperacion" />
+                <ScalarProperty Name="ClienteAlias" ColumnName="ClienteAlias" />
+                <ScalarProperty Name="Orden" ColumnName="Orden" />
+                <ScalarProperty Name="NumOperacion" ColumnName="NumOperacion" />
+                <ScalarProperty Name="Despachador" ColumnName="Despachador" />
+                <ScalarProperty Name="Almacen" ColumnName="Almacen" />
+                <ScalarProperty Name="Operacion" ColumnName="Operacion" />
+                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="HoraInicio" ColumnName="HoraInicio" />
+                <ScalarProperty Name="TiempoTranscurrido" ColumnName="TiempoTranscurrido" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="OperacionID" ColumnName="OperacionID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PA_MOV_OPERACIONES_OPCIONES" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_OPERACIONES_OPCIONES">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBAUSA_PYMOVILModel.PA_MOV_OPERACIONES_OPCIONES_Result">
+                <ScalarProperty Name="IdOperacion" ColumnName="IdOperacion" />
+                <ScalarProperty Name="Operacion" ColumnName="Operacion" />
+                <ScalarProperty Name="IdOpcion" ColumnName="IdOpcion" />
+                <ScalarProperty Name="Opcion" ColumnName="Opcion" />
+                <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PA_MOV_OPERACIONES_PERMISOOK" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_OPERACIONES_PERMISOOK" />
+          <FunctionImportMapping FunctionImportName="PA_MOV_OPERACIONES_REASGINACION" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_OPERACIONES_REASGINACION" />
+          <FunctionImportMapping FunctionImportName="PA_MOV_OPERACIONES_SOLICITARTRANSPORTE" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_OPERACIONES_SOLICITARTRANSPORTE" />
+          <FunctionImportMapping FunctionImportName="PA_MOV_OPERACIONES_TERMINAR" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_OPERACIONES_TERMINAR" />
+          <FunctionImportMapping FunctionImportName="PA_MOV_ORDEN_ID" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_ORDEN_ID" />
+          <FunctionImportMapping FunctionImportName="PA_MOV_RELACION_CLIENTE_TAREA_DELETE" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_RELACION_CLIENTE_TAREA_DELETE" />
+          <FunctionImportMapping FunctionImportName="PA_MOV_RELACION_CLIENTE_TAREA_INSERT" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_RELACION_CLIENTE_TAREA_INSERT" />
+          <FunctionImportMapping FunctionImportName="PA_MOV_RELACION_CLIENTE_TAREA_SELECT" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_RELACION_CLIENTE_TAREA_SELECT">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBAUSA_PYMOVILModel.PA_MOV_RELACION_CLIENTE_TAREA_SELECT_Result">
+                <ScalarProperty Name="rel_int_id" ColumnName="rel_int_id" />
+                <ScalarProperty Name="tar_int_id" ColumnName="tar_int_id" />
+                <ScalarProperty Name="cli_int_id" ColumnName="cli_int_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PA_MOV_RELACION_CLIENTE_TAREA_UPDATE" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_RELACION_CLIENTE_TAREA_UPDATE" />
+          <FunctionImportMapping FunctionImportName="PA_MOV_RELACION_NOTA_TAREA_DELETE" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_RELACION_NOTA_TAREA_DELETE" />
+          <FunctionImportMapping FunctionImportName="PA_MOV_RELACION_NOTA_TAREA_INSERT" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_RELACION_NOTA_TAREA_INSERT" />
+          <FunctionImportMapping FunctionImportName="PA_MOV_RELACION_NOTA_TAREA_SELECT" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_RELACION_NOTA_TAREA_SELECT">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBAUSA_PYMOVILModel.PA_MOV_RELACION_NOTA_TAREA_SELECT_Result">
+                <ScalarProperty Name="idrelacion" ColumnName="idrelacion" />
+                <ScalarProperty Name="idtarea" ColumnName="idtarea" />
+                <ScalarProperty Name="idnota" ColumnName="idnota" />
+                <ScalarProperty Name="archivo" ColumnName="archivo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PA_MOV_RELACION_NOTA_TAREA_UPDATE" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_RELACION_NOTA_TAREA_UPDATE" />
+          <FunctionImportMapping FunctionImportName="PA_MOV_TAREA_DELETE" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_TAREA_DELETE" />
+          <FunctionImportMapping FunctionImportName="PA_MOV_TAREA_INSERT" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_TAREA_INSERT" />
+          <FunctionImportMapping FunctionImportName="PA_MOV_TAREA_SELECT" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_TAREA_SELECT">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBAUSA_PYMOVILModel.PA_MOV_TAREA_SELECT_Result">
+                <ScalarProperty Name="tar_int_id" ColumnName="tar_int_id" />
+                <ScalarProperty Name="tiptar_int_id" ColumnName="tiptar_int_id" />
+                <ScalarProperty Name="tiptar_str_nombre" ColumnName="tiptar_str_nombre" />
+                <ScalarProperty Name="tipotarea" ColumnName="tipotarea" />
+                <ScalarProperty Name="usr_int_id" ColumnName="usr_int_id" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="tar_int_prioridad" ColumnName="tar_int_prioridad" />
+                <ScalarProperty Name="tar_dat_fchcreacion" ColumnName="tar_dat_fchcreacion" />
+                <ScalarProperty Name="tar_dat_fchmodificacion" ColumnName="tar_dat_fchmodificacion" />
+                <ScalarProperty Name="tar_dat_fchlimite" ColumnName="tar_dat_fchlimite" />
+                <ScalarProperty Name="tar_txt_detalle" ColumnName="tar_txt_detalle" />
+                <ScalarProperty Name="tar_int_estado" ColumnName="tar_int_estado" />
+                <ScalarProperty Name="tar_str_observacion" ColumnName="tar_str_observacion" />
+                <ScalarProperty Name="tar_str_orden" ColumnName="tar_str_orden" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PA_MOV_TAREA_TIPO_SELECT" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_TAREA_TIPO_SELECT">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBAUSA_PYMOVILModel.PA_MOV_TAREA_TIPO_SELECT_Result">
+                <ScalarProperty Name="tiptar_int_id" ColumnName="tiptar_int_id" />
+                <ScalarProperty Name="tiptar_int_usrcreacion" ColumnName="tiptar_int_usrcreacion" />
+                <ScalarProperty Name="tiptar_str_nombre" ColumnName="tiptar_str_nombre" />
+                <ScalarProperty Name="tiptar_str_descripcion" ColumnName="tiptar_str_descripcion" />
+                <ScalarProperty Name="tiptar_int_estado" ColumnName="tiptar_int_estado" />
+                <ScalarProperty Name="tiptar_int_usrmodif" ColumnName="tiptar_int_usrmodif" />
+                <ScalarProperty Name="usrmodif" ColumnName="usrmodif" />
+                <ScalarProperty Name="tiptar_dat_ultimamodif" ColumnName="tiptar_dat_ultimamodif" />
+                <ScalarProperty Name="tptar_bit_anulado" ColumnName="tptar_bit_anulado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PA_MOV_TAREA_UPDATE" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_TAREA_UPDATE" />
+          <FunctionImportMapping FunctionImportName="PA_MOV_TAREAS_TIPO_DELETE" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_TAREAS_TIPO_DELETE" />
+          <FunctionImportMapping FunctionImportName="PA_MOV_TAREAS_TIPO_INSERT" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_TAREAS_TIPO_INSERT" />
+          <FunctionImportMapping FunctionImportName="PA_MOV_TAREAS_TIPO_UPDATE" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_TAREAS_TIPO_UPDATE" />
+          <FunctionImportMapping FunctionImportName="PA_MOV_USUARIO_CARTERA_CLIENTES" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_USUARIO_CARTERA_CLIENTES">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBAUSA_PYMOVILModel.PA_MOV_USUARIO_CARTERA_CLIENTES_Result">
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+                <ScalarProperty Name="ClienteRazonSocial" ColumnName="ClienteRazonSocial" />
+                <ScalarProperty Name="FchModificacion" ColumnName="FchModificacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PA_MOV_USUARIO_DATOS" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_USUARIO_DATOS" />
+          <FunctionImportMapping FunctionImportName="PA_MOV_USUARIO_ROL" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_USUARIO_ROL">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBAUSA_PYMOVILModel.PA_MOV_USUARIO_ROL_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Sistema" ColumnName="Sistema" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PA_MOV_VALIDAR_USUARIO_EXTERNO" FunctionName="DBAUSA_PYMOVILModel.Store.PA_MOV_VALIDAR_USUARIO_EXTERNO" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

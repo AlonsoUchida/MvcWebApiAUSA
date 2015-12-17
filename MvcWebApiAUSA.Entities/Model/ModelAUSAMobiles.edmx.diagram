@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a3f8c502d31b406ebd3919495f35a114" Name="Diagram1">
+        <EntityTypeShape EntityType="DBAUSA_PYMOVILModel.TBL_MOV_NOTA" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAUSA_PYMOVILModel.TBL_MOV_RELACION_CLIENTE_TAREA" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAUSA_PYMOVILModel.TBL_MOV_RELACION_NOTA_TAREA" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAUSA_PYMOVILModel.TBL_MOV_TAREA" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAUSA_PYMOVILModel.TBL_MOV_TAREAS_TIPO" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <AssociationConnector Association="DBAUSA_PYMOVILModel.FK_TBL_MOV_RELACION_NOTA_TAREA_TBL_MOV_NOTA" ManuallyRouted="false" />
+        <AssociationConnector Association="DBAUSA_PYMOVILModel.FK_TBL_MOV_RELACION_CLIENTE_TAREA_TBL_MOV_TAREA" ManuallyRouted="false" />
+        <AssociationConnector Association="DBAUSA_PYMOVILModel.FK_TBL_MOV_RELACION_NOTA_TAREA_TBL_MOV_TAREA" ManuallyRouted="false" />
+        <AssociationConnector Association="DBAUSA_PYMOVILModel.FK_TBL_MOV_TAREA_TBL_MOV_TAREAS_TIPO" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

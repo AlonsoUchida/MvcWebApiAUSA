@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBAUSA_PYMOVILModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="TBL_MOV_NOTA">
+    <Key>
+      <PropertyRef Name="not_int_id" />
+    </Key>
+    <Property Name="not_int_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="not_str_archivo" Type="varchar" MaxLength="250" />
+    <Property Name="not_bit_anulado" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TBL_MOV_RELACION_CLIENTE_TAREA">
+    <Key>
+      <PropertyRef Name="rel_int_id" />
+    </Key>
+    <Property Name="rel_int_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tar_int_id" Type="int" />
+    <Property Name="cli_int_id" Type="int" />
+  </EntityType>
+  <EntityType Name="TBL_MOV_RELACION_NOTA_TAREA">
+    <Key>
+      <PropertyRef Name="rel_int_id" />
+    </Key>
+    <Property Name="rel_int_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tar_int_id" Type="int" />
+    <Property Name="not_int_id" Type="int" />
+  </EntityType>
+  <EntityType Name="TBL_MOV_TAREA">
+    <Key>
+      <PropertyRef Name="tar_int_id" />
+    </Key>
+    <Property Name="tar_int_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tiptar_int_id" Type="int" Nullable="false" />
+    <Property Name="usr_int_id" Type="int" Nullable="false" />
+    <Property Name="tar_int_prioridad" Type="int" />
+    <Property Name="tar_dat_fchcreacion" Type="datetime" />
+    <Property Name="tar_dat_fchmodificacion" Type="datetime" />
+    <Property Name="tar_dat_fchlimite" Type="datetime" />
+    <Property Name="tar_txt_detalle" Type="text" />
+    <Property Name="tar_int_estado" Type="int" />
+    <Property Name="tar_str_observacion" Type="varchar" MaxLength="250" />
+    <Property Name="tar_str_orden" Type="varchar" MaxLength="15" />
+    <Property Name="tar_bit_anulado" Type="int" />
+  </EntityType>
+  <EntityType Name="TBL_MOV_TAREAS_TIPO">
+    <Key>
+      <PropertyRef Name="tiptar_int_id" />
+    </Key>
+    <Property Name="tiptar_int_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tiptar_str_nombre" Type="varchar" MaxLength="200" />
+    <Property Name="tiptar_str_descripcion" Type="varchar" MaxLength="50" />
+    <Property Name="tiptar_int_estado" Type="int" />
+    <Property Name="tiptar_int_usrcreacion" Type="int" Nullable="false" />
+    <Property Name="tiptar_dat_fcreacion" Type="datetime" Nullable="false" />
+    <Property Name="tiptar_int_usrmodif" Type="int" />
+    <Property Name="tiptar_dat_ultimamodif" Type="datetime" />
+    <Property Name="tptar_bit_anulado" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_TBL_MOV_RELACION_CLIENTE_TAREA_TBL_MOV_TAREA">
+    <End Role="TBL_MOV_TAREA" Type="Self.TBL_MOV_TAREA" Multiplicity="0..1" />
+    <End Role="TBL_MOV_RELACION_CLIENTE_TAREA" Type="Self.TBL_MOV_RELACION_CLIENTE_TAREA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_MOV_TAREA">
+        <PropertyRef Name="tar_int_id" />
+      </Principal>
+      <Dependent Role="TBL_MOV_RELACION_CLIENTE_TAREA">
+        <PropertyRef Name="tar_int_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_MOV_RELACION_NOTA_TAREA_TBL_MOV_NOTA">
+    <End Role="TBL_MOV_NOTA" Type="Self.TBL_MOV_NOTA" Multiplicity="0..1" />
+    <End Role="TBL_MOV_RELACION_NOTA_TAREA" Type="Self.TBL_MOV_RELACION_NOTA_TAREA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_MOV_NOTA">
+        <PropertyRef Name="not_int_id" />
+      </Principal>
+      <Dependent Role="TBL_MOV_RELACION_NOTA_TAREA">
+        <PropertyRef Name="not_int_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_MOV_RELACION_NOTA_TAREA_TBL_MOV_TAREA">
+    <End Role="TBL_MOV_TAREA" Type="Self.TBL_MOV_TAREA" Multiplicity="0..1" />
+    <End Role="TBL_MOV_RELACION_NOTA_TAREA" Type="Self.TBL_MOV_RELACION_NOTA_TAREA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_MOV_TAREA">
+        <PropertyRef Name="tar_int_id" />
+      </Principal>
+      <Dependent Role="TBL_MOV_RELACION_NOTA_TAREA">
+        <PropertyRef Name="tar_int_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_MOV_TAREA_TBL_MOV_TAREAS_TIPO">
+    <End Role="TBL_MOV_TAREAS_TIPO" Type="Self.TBL_MOV_TAREAS_TIPO" Multiplicity="1" />
+    <End Role="TBL_MOV_TAREA" Type="Self.TBL_MOV_TAREA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_MOV_TAREAS_TIPO">
+        <PropertyRef Name="tiptar_int_id" />
+      </Principal>
+      <Dependent Role="TBL_MOV_TAREA">
+        <PropertyRef Name="tiptar_int_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="PA_MOV_CLIENTE_CONDICIONPAGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cliente" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_CLIENTE_CONDICIONPAGO_DETALLE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cliente" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_CLIENTE_CONTACTOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cliente" Type="int" Mode="In" />
+    <Parameter Name="contacto" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_CLIENTE_CONTACTOS_TELEFONOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cliente" Type="int" Mode="In" />
+    <Parameter Name="contacto" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_CLIENTE_DESPACHO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="orden" Type="int" Mode="In" />
+    <Parameter Name="referencia" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_CLIENTE_MOROSIDAD_UTILIZACION_LINEA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cliente" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_CLIENTE_PARTICIPACION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cliente" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_CLIENTE_PARTICIPACION_DETALLE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cliente" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_CLIENTE_TARIFAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cliente" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_DEVOLVER_IDUSUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="usr" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_NOTA_DELETE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="not_int_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_NOTA_INSERT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="not_str_archivo" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_NOTA_SELECT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="not_int_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_NOTA_UPDATE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="not_int_id" Type="int" Mode="In" />
+    <Parameter Name="not_str_archivo" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_NOTA_UPDATE_2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="not_str_archivo" Type="nvarchar" Mode="In" />
+    <Parameter Name="new_str_archivo" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_OPERACIONES_DESPACHADORES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="PA_MOV_OPERACIONES_DETALLE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ope_int_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_OPERACIONES_INICIAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ope_int_id" Type="int" Mode="In" />
+    <Parameter Name="usr_int_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_OPERACIONES_LISTAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ope_int_despachador" Type="int" Mode="In" />
+    <Parameter Name="cli_int_id" Type="int" Mode="In" />
+    <Parameter Name="ord_int_id" Type="int" Mode="In" />
+    <Parameter Name="fecha" Type="datetime" Mode="In" />
+    <Parameter Name="alm_int_id" Type="int" Mode="In" />
+    <Parameter Name="estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_OPERACIONES_OPCIONES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ope_int_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_OPERACIONES_PERMISOOK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ope_int_id" Type="int" Mode="In" />
+    <Parameter Name="usr_int_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_OPERACIONES_REASGINACION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ope_int_id" Type="int" Mode="In" />
+    <Parameter Name="ope_int_despachador" Type="int" Mode="In" />
+    <Parameter Name="ope_str_observacion" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_OPERACIONES_SOLICITARTRANSPORTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ope_int_id" Type="int" Mode="In" />
+    <Parameter Name="usr_int_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_OPERACIONES_TERMINAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ope_int_id" Type="int" Mode="In" />
+    <Parameter Name="usr_int_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_ORDEN_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="anio" Type="int" Mode="In" />
+    <Parameter Name="numero" Type="varchar" Mode="In" />
+    <Parameter Name="cliente" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_RELACION_CLIENTE_TAREA_DELETE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tar_int_id" Type="int" Mode="In" />
+    <Parameter Name="cli_int_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_RELACION_CLIENTE_TAREA_INSERT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tar_int_id" Type="int" Mode="In" />
+    <Parameter Name="cli_int_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_RELACION_CLIENTE_TAREA_SELECT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tar_int_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_RELACION_CLIENTE_TAREA_UPDATE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="rel_int_id" Type="int" Mode="In" />
+    <Parameter Name="tar_int_id" Type="int" Mode="In" />
+    <Parameter Name="cli_int_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_RELACION_NOTA_TAREA_DELETE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tar_int_id" Type="int" Mode="In" />
+    <Parameter Name="not_int_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_RELACION_NOTA_TAREA_INSERT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tar_int_id" Type="int" Mode="In" />
+    <Parameter Name="not_int_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_RELACION_NOTA_TAREA_SELECT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tar_int_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_RELACION_NOTA_TAREA_UPDATE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="rel_int_id" Type="int" Mode="In" />
+    <Parameter Name="tar_int_id" Type="int" Mode="In" />
+    <Parameter Name="not_int_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_TAREA_DELETE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tar_int_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_TAREA_INSERT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tiptar_int_id" Type="int" Mode="In" />
+    <Parameter Name="usr_int_id" Type="int" Mode="In" />
+    <Parameter Name="tar_int_prioridad" Type="int" Mode="In" />
+    <Parameter Name="tar_dat_fchlimite" Type="datetime" Mode="In" />
+    <Parameter Name="tar_txt_detalle" Type="text" Mode="In" />
+    <Parameter Name="tar_int_estado" Type="int" Mode="In" />
+    <Parameter Name="tar_str_observacion" Type="varchar" Mode="In" />
+    <Parameter Name="tar_str_orden" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_TAREA_SELECT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="usr_int_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_TAREA_TIPO_SELECT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="PA_MOV_TAREA_UPDATE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tar_int_id" Type="int" Mode="In" />
+    <Parameter Name="tiptar_int_id" Type="int" Mode="In" />
+    <Parameter Name="usr_int_id" Type="int" Mode="In" />
+    <Parameter Name="tar_int_prioridad" Type="int" Mode="In" />
+    <Parameter Name="tar_dat_fchlimite" Type="datetime" Mode="In" />
+    <Parameter Name="tar_txt_detalle" Type="text" Mode="In" />
+    <Parameter Name="tar_int_estado" Type="int" Mode="In" />
+    <Parameter Name="tar_str_observacion" Type="varchar" Mode="In" />
+    <Parameter Name="tar_str_orden" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_TAREAS_TIPO_DELETE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tiptar_int_id" Type="int" Mode="In" />
+    <Parameter Name="tiptar_int_usrcreacion" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_TAREAS_TIPO_INSERT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tiptar_str_nombre" Type="varchar" Mode="In" />
+    <Parameter Name="tiptar_str_descripcion" Type="varchar" Mode="In" />
+    <Parameter Name="tiptar_int_estado" Type="int" Mode="In" />
+    <Parameter Name="tiptar_int_usrmodif" Type="int" Mode="In" />
+    <Parameter Name="tiptar_int_usrcreacion" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_TAREAS_TIPO_UPDATE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tiptar_int_id" Type="int" Mode="In" />
+    <Parameter Name="tiptar_str_nombre" Type="varchar" Mode="In" />
+    <Parameter Name="tiptar_str_descripcion" Type="varchar" Mode="In" />
+    <Parameter Name="tiptar_int_estado" Type="int" Mode="In" />
+    <Parameter Name="tiptar_int_usrmodif" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_USUARIO_CARTERA_CLIENTES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="usr" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_USUARIO_DATOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="usr_int_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_USUARIO_ROL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="usr" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PA_MOV_VALIDAR_USUARIO_EXTERNO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="usr" Type="varchar" Mode="In" />
+    <Parameter Name="clave" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="DBAUSA_PYMOVILModelStoreContainer">
+    <EntitySet Name="TBL_MOV_NOTA" EntityType="Self.TBL_MOV_NOTA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_MOV_RELACION_CLIENTE_TAREA" EntityType="Self.TBL_MOV_RELACION_CLIENTE_TAREA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_MOV_RELACION_NOTA_TAREA" EntityType="Self.TBL_MOV_RELACION_NOTA_TAREA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_MOV_TAREA" EntityType="Self.TBL_MOV_TAREA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_MOV_TAREAS_TIPO" EntityType="Self.TBL_MOV_TAREAS_TIPO" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_TBL_MOV_RELACION_CLIENTE_TAREA_TBL_MOV_TAREA" Association="Self.FK_TBL_MOV_RELACION_CLIENTE_TAREA_TBL_MOV_TAREA">
+      <End Role="TBL_MOV_TAREA" EntitySet="TBL_MOV_TAREA" />
+      <End Role="TBL_MOV_RELACION_CLIENTE_TAREA" EntitySet="TBL_MOV_RELACION_CLIENTE_TAREA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_MOV_RELACION_NOTA_TAREA_TBL_MOV_NOTA" Association="Self.FK_TBL_MOV_RELACION_NOTA_TAREA_TBL_MOV_NOTA">
+      <End Role="TBL_MOV_NOTA" EntitySet="TBL_MOV_NOTA" />
+      <End Role="TBL_MOV_RELACION_NOTA_TAREA" EntitySet="TBL_MOV_RELACION_NOTA_TAREA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_MOV_RELACION_NOTA_TAREA_TBL_MOV_TAREA" Association="Self.FK_TBL_MOV_RELACION_NOTA_TAREA_TBL_MOV_TAREA">
+      <End Role="TBL_MOV_TAREA" EntitySet="TBL_MOV_TAREA" />
+      <End Role="TBL_MOV_RELACION_NOTA_TAREA" EntitySet="TBL_MOV_RELACION_NOTA_TAREA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_MOV_TAREA_TBL_MOV_TAREAS_TIPO" Association="Self.FK_TBL_MOV_TAREA_TBL_MOV_TAREAS_TIPO">
+      <End Role="TBL_MOV_TAREAS_TIPO" EntitySet="TBL_MOV_TAREAS_TIPO" />
+      <End Role="TBL_MOV_TAREA" EntitySet="TBL_MOV_TAREA" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

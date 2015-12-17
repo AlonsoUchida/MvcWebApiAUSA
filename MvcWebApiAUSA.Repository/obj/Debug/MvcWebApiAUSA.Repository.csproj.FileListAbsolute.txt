@@ -1,0 +1,50 @@
+c:\users\desarrollo\documents\visual studio 2015\Projects\MvcWebApiAUSA\MvcWebApiAUSA.Repository\obj\Debug\MvcWebApiAUSA.Repository.csprojResolveAssemblyReference.cache
+c:\users\desarrollo\documents\visual studio 2015\Projects\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\MvcWebApiAUSA.Repository.dll
+c:\users\desarrollo\documents\visual studio 2015\Projects\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\MvcWebApiAUSA.Repository.pdb
+c:\users\desarrollo\documents\visual studio 2015\Projects\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\MvcWebApiAUSA.DAL.dll
+c:\users\desarrollo\documents\visual studio 2015\Projects\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\MvcWebApiAUSA.Entities.dll
+c:\users\desarrollo\documents\visual studio 2015\Projects\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\EntityFramework.dll
+c:\users\desarrollo\documents\visual studio 2015\Projects\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\MvcWebApiAUSA.DAL.pdb
+c:\users\desarrollo\documents\visual studio 2015\Projects\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\MvcWebApiAUSA.Entities.pdb
+c:\users\desarrollo\documents\visual studio 2015\Projects\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\EntityFramework.xml
+c:\users\desarrollo\documents\visual studio 2015\Projects\MvcWebApiAUSA\MvcWebApiAUSA.Repository\obj\Debug\MvcWebApiAUSA.Repository.dll
+c:\users\desarrollo\documents\visual studio 2015\Projects\MvcWebApiAUSA\MvcWebApiAUSA.Repository\obj\Debug\MvcWebApiAUSA.Repository.pdb
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\MvcWebApiAUSA.Repository.dll.config
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\MvcWebApiAUSA.Repository.dll
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\MvcWebApiAUSA.Repository.pdb
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\Microsoft.Practices.Unity.dll
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\MvcWebApiAUSA.DAL.dll
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\MvcWebApiAUSA.Entities.dll
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\Newtonsoft.Json.dll
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\System.Net.Http.Formatting.dll
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\System.Web.Helpers.dll
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\System.Web.Http.dll
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\System.Web.Mvc.dll
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\System.Web.Razor.dll
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\System.Web.WebPages.dll
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\Unity.Mvc3.dll
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\EntityFramework.dll
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\MvcWebApiAUSA.DAL.pdb
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\MvcWebApiAUSA.Entities.pdb
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\Microsoft.Practices.Unity.xml
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\Newtonsoft.Json.xml
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\System.Net.Http.Formatting.xml
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\System.Web.Helpers.xml
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\System.Web.Http.xml
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\System.Web.Mvc.xml
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\System.Web.Razor.xml
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\System.Web.WebPages.xml
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\bin\Debug\EntityFramework.xml
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\obj\Debug\MvcWebApiAUSA.Repository.csprojResolveAssemblyReference.cache
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\obj\Debug\MvcWebApiAUSA.Repository.dll
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Repository\obj\Debug\MvcWebApiAUSA.Repository.pdb

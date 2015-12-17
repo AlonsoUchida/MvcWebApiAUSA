@@ -1,0 +1,20 @@
+c:\users\desarrollo\documents\visual studio 2015\Projects\MvcWebApiAUSA\MvcWebApiAUSA.Entities\bin\Debug\MvcWebApiAUSA.Entities.dll.config
+c:\users\desarrollo\documents\visual studio 2015\Projects\MvcWebApiAUSA\MvcWebApiAUSA.Entities\bin\Debug\MvcWebApiAUSA.Entities.dll
+c:\users\desarrollo\documents\visual studio 2015\Projects\MvcWebApiAUSA\MvcWebApiAUSA.Entities\bin\Debug\MvcWebApiAUSA.Entities.pdb
+c:\users\desarrollo\documents\visual studio 2015\Projects\MvcWebApiAUSA\MvcWebApiAUSA.Entities\bin\Debug\EntityFramework.dll
+c:\users\desarrollo\documents\visual studio 2015\Projects\MvcWebApiAUSA\MvcWebApiAUSA.Entities\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\desarrollo\documents\visual studio 2015\Projects\MvcWebApiAUSA\MvcWebApiAUSA.Entities\bin\Debug\EntityFramework.xml
+c:\users\desarrollo\documents\visual studio 2015\Projects\MvcWebApiAUSA\MvcWebApiAUSA.Entities\bin\Debug\EntityFramework.SqlServer.xml
+c:\users\desarrollo\documents\visual studio 2015\Projects\MvcWebApiAUSA\MvcWebApiAUSA.Entities\obj\Debug\MvcWebApiAUSA.Entities.csprojResolveAssemblyReference.cache
+c:\users\desarrollo\documents\visual studio 2015\Projects\MvcWebApiAUSA\MvcWebApiAUSA.Entities\obj\Debug\MvcWebApiAUSA.Entities.dll
+c:\users\desarrollo\documents\visual studio 2015\Projects\MvcWebApiAUSA\MvcWebApiAUSA.Entities\obj\Debug\MvcWebApiAUSA.Entities.pdb
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Entities\bin\Debug\MvcWebApiAUSA.Entities.dll.config
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Entities\bin\Debug\MvcWebApiAUSA.Entities.dll
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Entities\bin\Debug\MvcWebApiAUSA.Entities.pdb
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Entities\bin\Debug\EntityFramework.dll
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Entities\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Entities\bin\Debug\EntityFramework.xml
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Entities\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Entities\obj\Debug\MvcWebApiAUSA.Entities.csprojResolveAssemblyReference.cache
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Entities\obj\Debug\MvcWebApiAUSA.Entities.dll
+C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.Entities\obj\Debug\MvcWebApiAUSA.Entities.pdb
