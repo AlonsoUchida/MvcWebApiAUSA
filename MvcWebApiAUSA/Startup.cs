@@ -12,7 +12,7 @@ namespace MvcWebApiAUSA
     {
         public void Configuration(IAppBuilder app)
         {
-            MvcWebApiAUSA.Unity.Bootstrapper.Initialise();
+            Unity.Bootstrapper.Initialise();
             ConfigureAuth(app);
         }
     }
