@@ -71,13 +71,13 @@
     <Content Include="Unity.Mvc3.README.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MvcWebApiAUSA.DAL\MvcWebApiAUSA.DAL.csproj">
+    <ProjectReference Include="..\MvcWebApiAUSA.DAL\MvcWebApiAUSA.DataModel.csproj">
       <Project>{4c532abb-b502-41e5-84ae-0b1c7e2a8f96}</Project>
-      <Name>MvcWebApiAUSA.DAL</Name>
+      <Name>MvcWebApiAUSA.DataModel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MvcWebApiAUSA.Repository\MvcWebApiAUSA.Repository.csproj">
+    <ProjectReference Include="..\MvcWebApiAUSA.Repository\MvcWebApiAUSA.BusinessServices.csproj">
       <Project>{2f701658-6d7b-4700-80a7-691e19f2262c}</Project>
-      <Name>MvcWebApiAUSA.Repository</Name>
+      <Name>MvcWebApiAUSA.BusinessServices</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

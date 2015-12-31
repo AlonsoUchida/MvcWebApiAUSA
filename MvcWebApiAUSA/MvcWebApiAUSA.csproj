@@ -305,9 +305,9 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MvcWebApiAUSA.Repository\MvcWebApiAUSA.Repository.csproj">
+    <ProjectReference Include="..\MvcWebApiAUSA.Repository\MvcWebApiAUSA.BusinessServices.csproj">
       <Project>{2f701658-6d7b-4700-80a7-691e19f2262c}</Project>
-      <Name>MvcWebApiAUSA.Repository</Name>
+      <Name>MvcWebApiAUSA.BusinessServices</Name>
     </ProjectReference>
     <ProjectReference Include="..\MvcWebApiAUSA.Unity\MvcWebApiAUSA.Unity.csproj">
       <Project>{79f8a3b3-4e0e-4c1d-9d59-7187e0f69fa3}</Project>

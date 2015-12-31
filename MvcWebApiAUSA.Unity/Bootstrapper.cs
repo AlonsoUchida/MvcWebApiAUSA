@@ -1,10 +1,10 @@
 using System.Web.Mvc;
 using Microsoft.Practices.Unity;
 using Unity.Mvc3;
-using MvcWebApiAUSA.DAL.IDALs;
-using MvcWebApiAUSA.DAL.DALs;
-using MvcWebApiAUSA.Repository.IRepositories;
-using MvcWebApiAUSA.Repository.Repositories;
+using MvcWebApiAUSA.DataModel.IDALs;
+using MvcWebApiAUSA.DataModel.DALs;
+using MvcWebApiAUSA.BusinessServices.IService;
+using MvcWebApiAUSA.BusinessServices.Services;
 
 namespace MvcWebApiAUSA.Unity
 {
@@ -30,7 +30,7 @@ namespace MvcWebApiAUSA.Unity
 
             // e.g. container.RegisterType<ITestService, TestService>(); 
             container.RegisterType<INotasDAL, NotasDAL>();
-            container.RegisterType<INotasRepository, NotasRepository>();
+            container.RegisterType<INotasServices, NotasServices>();
             return container;
         }
     }

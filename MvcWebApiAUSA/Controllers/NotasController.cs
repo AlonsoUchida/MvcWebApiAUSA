@@ -3,6 +3,7 @@ using MvcWebApiAUSA.Repository.IRepositories;
 using MvcWebApiAUSA.Repository.Repositories;
 using System.Collections.Generic;
 using System.Web.Http;
+using System.Web.Mvc;
 
 namespace MvcWebApiAUSA.Controllers
 {
@@ -12,7 +13,13 @@ namespace MvcWebApiAUSA.Controllers
 
         public NotasController()
         {
-            service = MvcWebApiAUSA.Unity.Bootstrapper.Container.Resolve<NotasRepository>();
+            service = Unity.Bootstrapper.Container.Resolve<NotasRepository>();
+        }
+
+        // GET:
+        public ActionResult Index()
+        {
+            return null;
         }
 
         // GET api/default1

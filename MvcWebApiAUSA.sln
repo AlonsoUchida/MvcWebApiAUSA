@@ -5,13 +5,15 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcWebApiAUSA", "MvcWebApiAUSA\MvcWebApiAUSA.csproj", "{714238B2-F50D-46C5-A0F4-260FAEA2578E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcWebApiAUSA.Repository", "MvcWebApiAUSA.Repository\MvcWebApiAUSA.Repository.csproj", "{2F701658-6D7B-4700-80A7-691E19F2262C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcWebApiAUSA.BusinessServices", "MvcWebApiAUSA.Repository\MvcWebApiAUSA.BusinessServices.csproj", "{2F701658-6D7B-4700-80A7-691E19F2262C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcWebApiAUSA.DAL", "MvcWebApiAUSA.DAL\MvcWebApiAUSA.DAL.csproj", "{4C532ABB-B502-41E5-84AE-0B1C7E2A8F96}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcWebApiAUSA.DataModel", "MvcWebApiAUSA.DAL\MvcWebApiAUSA.DataModel.csproj", "{4C532ABB-B502-41E5-84AE-0B1C7E2A8F96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcWebApiAUSA.Entities", "MvcWebApiAUSA.Entities\MvcWebApiAUSA.Entities.csproj", "{8FD6C525-1298-4332-B79F-52CD2A889123}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcWebApiAUSA.BusinessEntities", "MvcWebApiAUSA.Entities\MvcWebApiAUSA.BusinessEntities.csproj", "{8FD6C525-1298-4332-B79F-52CD2A889123}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcWebApiAUSA.Unity", "MvcWebApiAUSA.Unity\MvcWebApiAUSA.Unity.csproj", "{79F8A3B3-4E0E-4C1D-9D59-7187E0F69FA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcWebApiAUSA.Common", "MvcWebApiAUSA.Common\MvcWebApiAUSA.Common.csproj", "{EE051EEC-30E3-4F5B-94DE-32FB63DED3D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{79F8A3B3-4E0E-4C1D-9D59-7187E0F69FA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79F8A3B3-4E0E-4C1D-9D59-7187E0F69FA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79F8A3B3-4E0E-4C1D-9D59-7187E0F69FA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE051EEC-30E3-4F5B-94DE-32FB63DED3D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE051EEC-30E3-4F5B-94DE-32FB63DED3D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE051EEC-30E3-4F5B-94DE-32FB63DED3D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE051EEC-30E3-4F5B-94DE-32FB63DED3D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

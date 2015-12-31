@@ -1,8 +1,0 @@
-c:\users\desarrollo\documents\visual studio 2015\Projects\MvcWebApiAUSA\MvcWebApiAUSA.DAL\bin\Debug\MvcWebApiAUSA.DAL.dll
-c:\users\desarrollo\documents\visual studio 2015\Projects\MvcWebApiAUSA\MvcWebApiAUSA.DAL\bin\Debug\MvcWebApiAUSA.DAL.pdb
-c:\users\desarrollo\documents\visual studio 2015\Projects\MvcWebApiAUSA\MvcWebApiAUSA.DAL\obj\Debug\MvcWebApiAUSA.DAL.dll
-c:\users\desarrollo\documents\visual studio 2015\Projects\MvcWebApiAUSA\MvcWebApiAUSA.DAL\obj\Debug\MvcWebApiAUSA.DAL.pdb
-C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.DAL\bin\Debug\MvcWebApiAUSA.DAL.dll
-C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.DAL\bin\Debug\MvcWebApiAUSA.DAL.pdb
-C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.DAL\obj\Debug\MvcWebApiAUSA.DAL.dll
-C:\Users\ArkMetal\Desktop\MvcWebApiAUSA\MvcWebApiAUSA.DAL\obj\Debug\MvcWebApiAUSA.DAL.pdb
